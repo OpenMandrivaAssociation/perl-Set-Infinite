@@ -1,20 +1,20 @@
 %define upstream_name    Set-Infinite
 %define upstream_version 0.65
 
-Name:       perl-%{upstream_name}
-Version:    %perl_convert_version %{upstream_version}
-Release:    %mkrel 2
+Name:		perl-%{upstream_name}
+Version:	%perl_convert_version %{upstream_version}
+Release:	3
 
-Summary:    Infinite Set Theory module, with Date, Time
-License:    GPL+ or Artistic
-Group:      Development/Perl
-Url:        http://search.cpan.org/dist/%{upstream_name}
-Source0:    http://www.cpan.org/modules/by-module/Set/%{upstream_name}-%{upstream_version}.tar.gz
+Summary:	Infinite Set Theory module, with Date, Time
+License:	GPL+ or Artistic
+Group:		Development/Perl
+Url:		http://search.cpan.org/dist/%{upstream_name}
+Source0:	http://www.cpan.org/modules/by-module/Set/%{upstream_name}-%{upstream_version}.tar.gz
 
-BuildRequires: perl(Test::More)
-BuildRequires: perl(Time::Local)
-BuildArch: noarch
-BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}
+BuildRequires:	perl-devel
+BuildRequires:	perl(Test::More)
+BuildRequires:	perl(Time::Local)
+BuildArch:	noarch
 
 %description
 Set::Infinite is a Set Theory module for infinite sets.
@@ -29,24 +29,29 @@ as dates).
 %setup -q -n %{upstream_name}-%{upstream_version}
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
-
+perl Makefile.PL INSTALLDIRS=vendor
 %make
 
 %check
 %make test
 
 %install
-rm -rf %buildroot
 %makeinstall_std
 
-%clean
-rm -rf %buildroot
-
 %files
-%defattr(-,root,root)
 %doc Changes LICENSE META.yml README
 %{_mandir}/man3/*
-%perl_vendorlib/*
+%{perl_vendorlib}/*
+
+%changelog
+* Mon Apr 18 2011 Funda Wang <fwang@mandriva.org> 0.650.0-2mdv2011.0
++ Revision: 655217
+- rebuild for updated spec-helper
+
+* Thu May 06 2010 Michael Scherer <misc@mandriva.org> 0.650.0-1mdv2011.0
++ Revision: 542920
+- import perl-Set-Infinite
 
 
+* Thu May 06 2010 cpan2dist 0.65-1mdv
+- initial mdv release, generated with cpan2dist
