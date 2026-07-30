@@ -1,13 +1,14 @@
 %define upstream_name    Set-Infinite
+%define upstream_version 0.65
 Name:		perl-%{upstream_name}
 Version:	0.65
-Release:	6
+Release:	1
 
 Summary:	Infinite Set Theory module, with Date, Time
 License:	GPL+ or Artistic
 Group:		Development/Perl
 Url:		https://metacpan.org/dist/%{upstream_name}
-Source0:	http://www.cpan.org/modules/by-module/Set/%{upstream_name}-%{version}.tar.gz
+Source0:	https://cpan.metacpan.org/authors/id/F/FG/FGLOCK/Set-Infinite-0.65.tar.gz
 
 BuildRequires:	make
 BuildRequires:	perl-devel
@@ -42,15 +43,3 @@ perl Makefile.PL INSTALLDIRS=vendor
 %{_mandir}/man3/*
 %{perl_vendorlib}/*
 
-%changelog
-* Mon Apr 18 2011 Funda Wang <fwang@mandriva.org> 0.650.0-2mdv2011.0
-+ Revision: 655217
-- rebuild for updated spec-helper
-
-* Thu May 06 2010 Michael Scherer <misc@mandriva.org> 0.650.0-1mdv2011.0
-+ Revision: 542920
-- import perl-Set-Infinite
-
-
-* Thu May 06 2010 cpan2dist 0.65-1mdv
-- initial mdv release, generated with cpan2dist
