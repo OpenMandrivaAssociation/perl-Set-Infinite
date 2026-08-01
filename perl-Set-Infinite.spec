@@ -2,7 +2,7 @@
 %define upstream_version 0.65
 Name:		perl-%{upstream_name}
 Version:	0.65
-Release:	3
+Release:	4
 
 Summary:	Infinite Set Theory module, with Date, Time
 License:	GPL+ or Artistic
@@ -35,6 +35,7 @@ perl Makefile.PL INSTALLDIRS=vendor
 %check
 # soft: do not fail package on test failures
 set +e
+make test || :
 %make test || :
 
 %install
